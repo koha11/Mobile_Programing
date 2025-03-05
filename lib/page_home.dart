@@ -1,3 +1,5 @@
+import 'package:anhkhoa_flutter_app/getx/getx_ex.dart';
+import 'package:anhkhoa_flutter_app/getx/getx_simple_state_management.dart';
 import 'package:anhkhoa_flutter_app/layout/grid_view_example.dart';
 import 'package:anhkhoa_flutter_app/layout/list_view_example.dart';
 import 'package:anhkhoa_flutter_app/profile/page_profile.dart';
@@ -22,7 +24,12 @@ class PageHome extends StatelessWidget {
             buildButton(context,
                 title: "My List View", destination: PageListView()),
             buildButton(context,
-                title: "My Grid View", destination: PageGridView())
+                title: "My Grid View", destination: PageGridView()),
+            buildButton(context,
+                title: "My Counter GetX View", destination: PageCounterGetx()),
+            buildButton(context,
+                title: "My GetX Simple State Management View",
+                destination: PageSimpleState())
           ],
         ),
       )),
