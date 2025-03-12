@@ -1,5 +1,7 @@
+import 'package:anhkhoa_flutter_app/commercial_app/app_fruit_store.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_ex.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_simple_state_management.dart';
+import 'package:anhkhoa_flutter_app/json_list/page_album.dart';
 import 'package:anhkhoa_flutter_app/layout/grid_view_example.dart';
 import 'package:anhkhoa_flutter_app/layout/list_view_example.dart';
 import 'package:anhkhoa_flutter_app/profile/page_profile.dart';
@@ -29,7 +31,11 @@ class PageHome extends StatelessWidget {
                 title: "My Counter GetX View", destination: PageCounterGetx()),
             buildButton(context,
                 title: "My GetX Simple State Management View",
-                destination: PageSimpleState())
+                destination: PageSimpleState()),
+            buildButton(context, title: "GetX App", destination: GetXApp()),
+            buildButton(context,
+                title: "Fruit Store App", destination: AppFruitStore()),
+            buildButton(context, title: "JSON Album", destination: PageAlbum())
           ],
         ),
       )),

@@ -1,3 +1,4 @@
+import 'package:anhkhoa_flutter_app/commercial_app/app_fruit_store.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_simple_state_management.dart';
 import 'package:anhkhoa_flutter_app/layout/grid_view_example.dart';
 import 'package:anhkhoa_flutter_app/layout/list_view_example.dart';
@@ -5,8 +6,9 @@ import 'package:anhkhoa_flutter_app/page_home.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  // runApp(const MyApp());
-  runApp(const GetXApp());
+  runApp(const MyApp());
+  // runApp(const GetXApp());
+  // runApp(const AppFruitStore());
 }
 
 class MyApp extends StatelessWidget {
@@ -22,6 +24,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: PageHome(),
+      debugShowCheckedModeBanner: false,
     );
   }
 }
