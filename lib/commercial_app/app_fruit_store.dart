@@ -1,7 +1,7 @@
-import 'package:anhkhoa_flutter_app/commercial_app/controllers/controller_fruit.dart';
+// import 'package:anhkhoa_flutter_app/commercial_app/controllers/controller_fruit.dart';
+import 'package:anhkhoa_flutter_app/commercial_app/controllers/controller_fruit_haslistener.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/page_chitiet_fruit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 import 'package:badges/badges.dart' as badges;
 
@@ -34,7 +34,7 @@ class PageHomeFruitStore extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           GetBuilder(
-            init: ControllerFruit.get(),
+            init: ControllerFruit2.get(),
             id: "gh",
             builder: (controller) => badges.Badge(
               showBadge: controller.slMHGH > 0,
@@ -51,7 +51,7 @@ class PageHomeFruitStore extends StatelessWidget {
         ],
       ),
       body: GetBuilder(
-        init: ControllerFruit.get(),
+        init: ControllerFruit2.get(),
         id: "fruits",
         builder: (controller) {
           var fruits = controller.fruits;

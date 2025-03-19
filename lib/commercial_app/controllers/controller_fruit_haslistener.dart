@@ -1,26 +1,34 @@
 import 'package:anhkhoa_flutter_app/commercial_app/models/fruit.model.dart';
 import 'package:get/get.dart';
 
-class ControllerFruit extends GetxController {
-  var fruits = <Fruit>[];
+class ControllerFruit2 extends GetxController {
+  // var fruits = <Fruit>[];
+  Map<int, Fruit> _maps = {};
   var gh = <GH_Item>[];
 
   int get slMHGH => gh.length;
-  static ControllerFruit get() => Get.find();
+  static ControllerFruit2 get() => Get.find();
+  Iterable<Fruit> get fruits => _maps.values;
 
   @override
-  void onReady() {
+  void onReady() async {
     // TODO: implement onReady
     super.onReady();
-    print("dang o onReady");
-    _docDL();
+
+    // fruits = await FruitSnapshot.getFruits();
+
+    _maps = await FruitSnapshot.getMapFruits();
+    update(["fruits"]);
+    FruitSnapshot.listenFruitchange(
+      _maps,
+      updateUI: () => update(["fruits"]),
+    );
   }
 
-  _docDL() async {
-    print("dang o _docDL");
-    fruits = await FruitSnapshot.getFruits();
-    update(["fruits"]);
-  }
+  // _docDL() async {
+  //   // fruits = await FruitSnapshot.getFruits();
+  //   update(["fruits"]);
+  // }
 
   void themMHGH(Fruit f) {
     for (var item in gh) {
@@ -40,7 +48,7 @@ class BindingsHomeFruitStore extends Bindings {
   void dependencies() {
     // TODO: implement dependencies
     Get.lazyPut(
-      () => ControllerFruit(),
+      () => ControllerFruit2(),
     );
   }
 }

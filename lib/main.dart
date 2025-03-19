@@ -4,11 +4,23 @@ import 'package:anhkhoa_flutter_app/layout/grid_view_example.dart';
 import 'package:anhkhoa_flutter_app/layout/list_view_example.dart';
 import 'package:anhkhoa_flutter_app/page_home.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
-  runApp(const MyApp());
-  // runApp(const GetXApp());
-  // runApp(const AppFruitStore());
+// void main() {
+//
+// }
+
+void main() async {
+  await dotenv.load();
+
+  await Supabase.initialize(
+    url: 'https://tkepwkvgfmczssulsmzj.supabase.co',
+    anonKey: dotenv.env['SUPABASE_KEY']!,
+  );
+
+  // Get a reference your Supabase client
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {

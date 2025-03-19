@@ -1,6 +1,7 @@
 import 'dart:math';
 
-import 'package:anhkhoa_flutter_app/commercial_app/controllers/controller_fruit.dart';
+// import 'package:anhkhoa_flutter_app/commercial_app/controllers/controller_fruit.dart';
+import 'package:anhkhoa_flutter_app/commercial_app/controllers/controller_fruit_haslistener.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/models/fruit.model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
@@ -22,7 +23,7 @@ class PageChitietFruit extends StatelessWidget {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         actions: [
           GetBuilder(
-            init: ControllerFruit.get(),
+            init: ControllerFruit2.get(),
             id: "gh",
             builder: (controller) => badges.Badge(
               showBadge: controller.slMHGH > 0,
@@ -112,7 +113,7 @@ class PageChitietFruit extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          ControllerFruit.get().themMHGH(fruit);
+          ControllerFruit2.get().themMHGH(fruit);
         },
         child: Icon(Icons.add_shopping_cart_outlined),
       ),
