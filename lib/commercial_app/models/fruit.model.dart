@@ -1,3 +1,4 @@
+import 'package:anhkhoa_flutter_app/commercial_app/supabase_helper.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Fruit {
@@ -16,9 +17,52 @@ class Fruit {
         moTa: json['moTa'],
         anh: json['anh']);
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "id": id,
+      "gia": gia,
+      "ten": ten,
+      "moTa": moTa,
+      "anh": anh,
+    };
+  }
 }
 
 class FruitSnapshot {
+  Fruit fruit;
+
+  FruitSnapshot(this.fruit);
+
+  Future<dynamic> update(Fruit newFruit) async {
+    final supabase = Supabase.instance.client;
+    var data = await supabase
+        .from("Fruit")
+        .update(newFruit.toJson())
+        .eq("id", fruit.id)
+        .select();
+
+    return data;
+  }
+
+  Future<void> delete() async {
+    final supabase = Supabase.instance.client;
+
+    await supabase.from("Fruit").delete().eq("id", fruit.id);
+
+    await removeImage(bucket: "Images", path: "fruits/Fruit_${fruit.id}");
+
+    return;
+  }
+
+  static Future<dynamic> insert(Fruit newFruit) async {
+    final supabase = Supabase.instance.client;
+
+    var data = await supabase.from('Fruit').insert(newFruit.toJson());
+
+    return data;
+  }
+
   static Future<List<Fruit>> getFruits() async {
     final supabase = Supabase.instance.client;
     List<Fruit> fruits = [];

@@ -66,14 +66,6 @@ class PageHomeFruitStore extends StatelessWidget {
                       child: GestureDetector(
                     child: Column(
                       children: [
-                        Text(
-                          fruit.ten,
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 24),
-                        ),
-                        SizedBox(
-                          height: 5,
-                        ),
                         Expanded(
                           child: SizedBox(
                             height: 200,
@@ -86,6 +78,11 @@ class PageHomeFruitStore extends StatelessWidget {
                         ),
                         SizedBox(
                           height: 5,
+                        ),
+                        Text(
+                          fruit.ten,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, fontSize: 24),
                         ),
                         SizedBox(
                           height: 5,

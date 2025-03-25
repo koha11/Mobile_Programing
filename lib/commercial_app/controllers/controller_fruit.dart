@@ -12,12 +12,10 @@ class ControllerFruit extends GetxController {
   void onReady() {
     // TODO: implement onReady
     super.onReady();
-    print("dang o onReady");
     _docDL();
   }
 
   _docDL() async {
-    print("dang o _docDL");
     fruits = await FruitSnapshot.getFruits();
     update(["fruits"]);
   }
