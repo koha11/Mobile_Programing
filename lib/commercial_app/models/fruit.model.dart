@@ -74,57 +74,27 @@ class FruitSnapshot {
     return fruits;
   }
 
+  static Stream<List<Fruit>> getFruitStream() {
+    return getDataStream<Fruit>(
+        ids: ['id'], fromJson: Fruit.fromJson, table: "Fruit");
+  }
+
   static Future<Map<int, Fruit>> getMapFruits() async {
-    final supabase = Supabase.instance.client;
-    final data = await supabase.from("Fruit").select();
-
-    var iterable = data.map(
-      (e) => Fruit.fromJson(e),
+    return getMapData(
+      table: "Fruit",
+      fromJson: Fruit.fromJson,
+      getId: (t) => t.id,
     );
-
-    Map<int, Fruit> _maps = Map.fromIterable(
-      iterable,
-      key: (fruit) => fruit.id,
-      value: (fruit) => fruit,
-    );
-
-    return _maps;
   }
 
   static listenFruitchange(Map<int, Fruit> maps, {Function()? updateUI}) async {
-    final supabase = Supabase.instance.client;
-
-    supabase
-        .channel('public:Fruit')
-        .onPostgresChanges(
-            event: PostgresChangeEvent.all,
-            schema: 'public',
-            table: 'Fruit',
-            callback: (payload) {
-              print('Change received: ${payload.toString()}');
-              switch (payload.eventType) {
-                // case "INSERT" "UPDATE":
-                case PostgresChangeEvent.insert:
-                case PostgresChangeEvent.update:
-                  {
-                    Fruit f = Fruit.fromJson(payload.newRecord);
-                    maps[f.id] = f;
-                    updateUI?.call();
-                    break;
-                  }
-
-                case PostgresChangeEvent.delete:
-                  {
-                    maps.remove(payload.oldRecord["id"]);
-                    updateUI?.call();
-                    break;
-                  }
-
-                default:
-                  {}
-              }
-            })
-        .subscribe();
+    return listenDatachange(maps,
+        channel: "Fruit:public",
+        schema: "public",
+        table: "Fruit",
+        fromJson: Fruit.fromJson,
+        getId: (t) => t.id,
+        updateUI: updateUI);
   }
 
   // static List<Fruit> getALL() {

@@ -1,4 +1,5 @@
 import 'package:anhkhoa_flutter_app/commercial_app/app_fruit_store.dart';
+import 'package:anhkhoa_flutter_app/commercial_app/page_fruit_stream.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_ex.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_simple_state_management.dart';
 import 'package:anhkhoa_flutter_app/json_list/page_album.dart';
@@ -37,7 +38,9 @@ class PageHome extends StatelessWidget {
             buildButton(context,
                 title: "Fruit Store App", destination: AppFruitStore()),
             buildButton(context, title: "JSON Album", destination: PageAlbum()),
-            buildButton(context, title: "Page RSS", destination: PageRss())
+            buildButton(context, title: "Page RSS", destination: PageRss()),
+            buildButton(context,
+                title: "Page Fruit Stream", destination: PageFruitStream()),
           ],
         ),
       )),
