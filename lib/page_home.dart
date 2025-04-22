@@ -1,5 +1,7 @@
+import 'package:anhkhoa_flutter_app/commercial_app/admin_pages/fruits_page_admin.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/app_fruit_store.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/page_fruit_stream.dart';
+import 'package:anhkhoa_flutter_app/form/page_form.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_ex.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_simple_state_management.dart';
 import 'package:anhkhoa_flutter_app/json_list/page_album.dart';
@@ -7,6 +9,7 @@ import 'package:anhkhoa_flutter_app/layout/grid_view_example.dart';
 import 'package:anhkhoa_flutter_app/layout/list_view_example.dart';
 import 'package:anhkhoa_flutter_app/profile/page_profile.dart';
 import 'package:anhkhoa_flutter_app/rss/pages/page_rss.dart';
+import 'package:anhkhoa_flutter_app/url_handler/PageCallPhone.dart';
 import 'package:flutter/material.dart';
 
 class PageHome extends StatelessWidget {
@@ -41,6 +44,11 @@ class PageHome extends StatelessWidget {
             buildButton(context, title: "Page RSS", destination: PageRss()),
             buildButton(context,
                 title: "Page Fruit Stream", destination: PageFruitStream()),
+            buildButton(context, title: "Page Form", destination: PageForm()),
+            buildButton(context,
+                title: "Call Phone", destination: PageCallPhone()),
+            buildButton(context,
+                title: "Page Fruit Admin", destination: PageFruitsAdmin()),
           ],
         ),
       )),
