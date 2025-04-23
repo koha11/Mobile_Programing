@@ -7,6 +7,7 @@ import 'package:anhkhoa_flutter_app/getx/getx_simple_state_management.dart';
 import 'package:anhkhoa_flutter_app/json_list/page_album.dart';
 import 'package:anhkhoa_flutter_app/layout/grid_view_example.dart';
 import 'package:anhkhoa_flutter_app/layout/list_view_example.dart';
+import 'package:anhkhoa_flutter_app/local_storage/page_get_storage.dart';
 import 'package:anhkhoa_flutter_app/permission/page_permission.dart';
 import 'package:anhkhoa_flutter_app/profile/page_profile.dart';
 import 'package:anhkhoa_flutter_app/rss/pages/page_rss.dart';
@@ -53,6 +54,8 @@ class PageHome extends StatelessWidget {
             buildButton(context,
                 title: "Request Permission Demo",
                 destination: PageRequestPermission()),
+            buildButton(context,
+                title: "Page Get Storage", destination: PageGetStorage()),
           ],
         ),
       )),
