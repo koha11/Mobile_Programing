@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
+import '../../helpers/dialogs.dart';
 import '../models/fruit.model.dart';
 import '../supabase_helper.dart';
 
@@ -84,11 +85,8 @@ class _PageAddFruitState extends State<PageAddFruit> {
               ElevatedButton(
                   onPressed: () async {
                     if (xFile != null) {
-                      ScaffoldMessenger.of(context).clearSnackBars();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Đang thêm ${txtTen.text} ..."),
-                        duration: Duration(seconds: 5),
-                      ));
+                      showSnackBar(context,
+                          msg: "Đang thêm ${txtTen.text} ...");
 
                       var imageUrl = await uploadImage(
                           image: File(xFile!.path),
@@ -103,11 +101,8 @@ class _PageAddFruitState extends State<PageAddFruit> {
                           moTa: txtMoTa.text);
 
                       FruitSnapshot.insert(fruit);
-                      ScaffoldMessenger.of(context).clearSnackBars();
-                      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                        content: Text("Đã thêm ${txtTen.text} ..."),
-                        duration: Duration(seconds: 5),
-                      ));
+                      showSnackBar(context,
+                          msg: "Đang thêm ${txtTen.text} ...");
                     }
                   },
                   child: Text("Thêm")),

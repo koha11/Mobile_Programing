@@ -1,5 +1,6 @@
 import 'package:anhkhoa_flutter_app/commercial_app/admin_pages/fruits_page_admin.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/app_fruit_store.dart';
+import 'package:anhkhoa_flutter_app/commercial_app/page_auth_user.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/page_fruit_stream.dart';
 import 'package:anhkhoa_flutter_app/form/page_form.dart';
 import 'package:anhkhoa_flutter_app/getx/getx_ex.dart';
@@ -51,6 +52,8 @@ class PageHome extends StatelessWidget {
                 title: "Call Phone", destination: PageCallPhone()),
             buildButton(context,
                 title: "Page Fruit Admin", destination: PageFruitsAdmin()),
+            buildButton(context,
+                title: "Page Auth Fruit User", destination: PageAuthUser()),
             buildButton(context,
                 title: "Request Permission Demo",
                 destination: PageRequestPermission()),

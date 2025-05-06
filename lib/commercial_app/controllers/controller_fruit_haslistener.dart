@@ -19,7 +19,7 @@ class ControllerFruit2 extends GetxController {
 
     _maps = await FruitSnapshot.getMapFruits();
     update(["fruits"]);
-    FruitSnapshot.listenFruitchange(
+    FruitSnapshot.listenFruitChange(
       _maps,
       updateUI: () => update(["fruits"]),
     );

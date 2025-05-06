@@ -1,4 +1,5 @@
 import 'package:anhkhoa_flutter_app/commercial_app/admin_pages/fruit_add_page.dart';
+import 'package:anhkhoa_flutter_app/commercial_app/admin_pages/fruit_update_page.dart';
 import 'package:anhkhoa_flutter_app/commercial_app/models/fruit.model.dart';
 import 'package:anhkhoa_flutter_app/helpers/dialogs.dart';
 import 'package:anhkhoa_flutter_app/mywidgets/async_widget.dart';
@@ -42,7 +43,12 @@ class PageFruitsAdmin extends StatelessWidget {
                             children: [
                               SlidableAction(
                                 // An action can be bigger than the others.
-                                onPressed: (context) {},
+                                onPressed: (context) {
+                                  Navigator.of(context).push(MaterialPageRoute(
+                                    builder: (context) =>
+                                        PageUpdateFruit(fruit: fruit),
+                                  ));
+                                },
                                 backgroundColor: Colors.blue,
                                 foregroundColor: Colors.white,
                                 icon: Icons.edit,

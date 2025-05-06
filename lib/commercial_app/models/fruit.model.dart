@@ -34,12 +34,12 @@ class FruitSnapshot {
 
   FruitSnapshot(this.fruit);
 
-  Future<dynamic> update(Fruit newFruit) async {
+  static Future<dynamic> update(Fruit newFruit) async {
     final supabase = Supabase.instance.client;
     var data = await supabase
         .from("Fruit")
         .update(newFruit.toJson())
-        .eq("id", fruit.id)
+        .eq("id", newFruit.id)
         .select();
 
     return data;
@@ -87,7 +87,7 @@ class FruitSnapshot {
     );
   }
 
-  static listenFruitchange(Map<int, Fruit> maps, {Function()? updateUI}) async {
+  static listenFruitChange(Map<int, Fruit> maps, {Function()? updateUI}) async {
     return listenDatachange(maps,
         channel: "Fruit:public",
         schema: "public",
